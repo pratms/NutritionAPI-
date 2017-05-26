@@ -11,7 +11,7 @@ var XLSX = require('xlsx');
 var app = express();
 
 // Database settings
-mongoose.connect('mongodb://pratik:pratik@ds059496.mlab.com:59496/heroku_9rflxd4s');
+mongoose.connect('mongodb://pratik:pratik@[password].mlab.com:59496/heroku_9rflxd4s');
 var db = mongoose.connection;
 
 db.on('error', function (err) {
