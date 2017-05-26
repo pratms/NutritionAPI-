@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div id="container">
+      <h3><span>Koneksa </span> Health Back End "Challenge"</h3>
+
+      <input type="search" id="Search" placeholder="Search for something..">
+
+      <button onclick="myFunction()">Search</button>
+  <div>
+    <table id="demo">
+      
+    </table>
+
+  </div>
+    </div>
+
+  </body>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+function myFunction()
+ {
+    var x = document.getElementById("Search").value;
+    $("#demo").html("");
+
+    var request = new XMLHttpRequest();
+
+request.onreadystatechange = function(response) {
+          var result = document.getElementById("demo");
+          if (request.readyState === 4) {
+          if (request.status === 200) {
+
+          var result = JSON.parse(request.responseText);
+        $("#demo").append("<tr><th>Item Name</th><th>Brand Name</th><th>Calories</th></tr>")
+          result.forEach(function(item) {
+            console.log(item.result);
+
+          $("#demo").append("<tr><td>"+item.result.item_name+"</td><td>"+item.result.brand_name+"</td><td>" +item.result.nf_calories + " </td> </tr>").css("display","block");
+          });
+          }
+          else {
+           result.append = "Couldn't load data :(";
+          }
+          }
+};
+
+request.open("GET", "/searching/?q=" + x, true);
+request.send();
+}
+</script>
+</html>
