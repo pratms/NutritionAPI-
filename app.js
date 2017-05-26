@@ -2,7 +2,6 @@ var express = require('express');
 var path = require('path');
 var request = require('request');
 var index = require('./routes/index');
-var users = require('./routes/users');
 var natural = require('natural');
 var mongodb = require('mongodb');
 var mongoose = require('mongoose');
