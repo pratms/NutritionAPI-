@@ -44,7 +44,7 @@ function file_food_item()
   j.forEach(function(food_items)
 
   {
-    request('https://api.nutritionix.com/v1_1/search/'+ food_items +'?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=[yourappid]f&appKey=[YourAppkey]',
+    request('https://api.nutritionix.com/v1_1/search/'+ food_items +'?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=AppIdf&appKey=Appkey',
     function (error, response, body) {
 
       var Koneksa = mongoose.model('Koneksa', KoneksaSchema);
@@ -78,8 +78,8 @@ app.get('/searching', function(req, res) {
 
 // API Call
 
-    request('https://api.nutritionix.com/v1_1/search/'+ food_items +'?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=[yourappid]f&appKey=[YourAppkey]',
-    function (error, response, body) {
+   
+    request('https://api.nutritionix.com/v1_1/search/'+ food_items +'?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=AppIdf&appKey=Appkey',    function (error, response, body) {
       if (!error && response.statusCode == 200) {
            body = JSON.parse(body);
       var result = body.hits;
