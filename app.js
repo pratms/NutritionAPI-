@@ -8,7 +8,8 @@ var mongoose = require('mongoose');
 var XLSX = require('xlsx');
 
 var app = express();
-
+var AppId = yourAppId;
+var Appkey = yourAppKey;
 // Database settings
 mongoose.connect('mongodb://pratik:[password].mlab.com:59496/heroku_9rflxd4s');
 var db = mongoose.connection;
@@ -43,7 +44,7 @@ function file_food_item()
   j.forEach(function(food_items)
 
   {
-    request('https://api.nutritionix.com/v1_1/search/'+ food_items +'?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=6d84533f&appKey=ca319bc840f460ac9eb20ae310d477cb',
+    request('https://api.nutritionix.com/v1_1/search/'+ food_items +'?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=[yourappid]f&appKey=[YourAppkey]',
     function (error, response, body) {
 
       var Koneksa = mongoose.model('Koneksa', KoneksaSchema);
@@ -77,7 +78,7 @@ app.get('/searching', function(req, res) {
 
 // API Call
 
-    request('https://api.nutritionix.com/v1_1/search/'+ element +'?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=6d84533f&appKey=ca319bc840f460ac9eb20ae310d477cb',
+    request('https://api.nutritionix.com/v1_1/search/'+ food_items +'?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=[yourappid]f&appKey=[YourAppkey]',
     function (error, response, body) {
       if (!error && response.statusCode == 200) {
            body = JSON.parse(body);
